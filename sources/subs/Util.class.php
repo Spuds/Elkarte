@@ -142,7 +142,7 @@ class Util
 	 *
 	 * @param string $string
 	 * @param string $start
-	 * @param int $length
+	 * @param int|null $length
 	 */
 	static function substr($string, $start, $length = null)
 	{
@@ -268,7 +268,7 @@ class Util
 	 * - importantly escapes all keys and values!
 	 * - calls itself recursively if necessary.
 	 *
-	 * @param array|string $var
+	 * @param mixed[]|string $var
 	 * @return array|string
 	 */
 	static function escapestring_recursive($var)
@@ -295,7 +295,7 @@ class Util
 	 * - effects both keys and values of arrays.
 	 * - calls itself recursively to handle arrays of arrays.
 	 *
-	 * @param array|string $var
+	 * @param mixed[]|string $var
 	 * @param int $level = 0
 	 * @return array|string
 	 */
@@ -321,7 +321,7 @@ class Util
 	 * - importantly, does it to keys too!
 	 * - calls itself recursively if there are any sub arrays.
 	 *
-	 * @param array|string $var
+	 * @param mixed[]|string $var
 	 * @param int $level = 0
 	 * @return array|string
 	 */
@@ -347,7 +347,7 @@ class Util
 	 * - effects both keys and values of arrays.
 	 * - calls itself recursively to handle arrays of arrays.
 	 *
-	 * @param array|string $var
+	 * @param mixed[]|string $var
 	 * @return array|string
 	 */
 	function unescapestring_recursive($var)

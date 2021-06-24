@@ -148,7 +148,7 @@
 
 /* Normal, standard links. */
 a, a:link, a:visited,
-/* Links that open in a new window. */
+	/* Links that open in a new window. */
 a.new_win:link, a.new_win:visited {
 	color: var(--links);
 }
@@ -206,8 +206,8 @@ input[disabled].input_text, input[disabled].input_password {
 
 /* Common button styling. */
 input[type="submit"], .drop_area_fileselect_text, button[type="submit"], input[type="button"],
-/* Anchors styled to look like buttons.
-   These have standard body text size. Can be chained with smalltext class. */
+	/* Anchors styled to look like buttons.
+	   These have standard body text size. Can be chained with smalltext class. */
 .linkbutton:link, .linkbutton:visited {
 	color: var(--menu_text);
 	border-color: var(--seconday_border);
@@ -399,7 +399,7 @@ strong {
 
 /* A quote, perhaps from another post. */
 .bbc_quote,
-/* A code block - maybe PHP ;) - shared styles. */
+	/* A code block - maybe PHP ;) - shared styles. */
 .bbc_code {
 	border-color: var(--primary_border);
 	background: var(--primary_white);
@@ -480,8 +480,8 @@ sup.bbc_footnotes, sup.bbc_footnotes a {
 	color: var(--top_section_border);
 	border-bottom-color: var(--top_section_border);
 	background: var(--content-background);
-	background-size: 20px 20px;
 	background-position: 6px 50%;
+	background-size: 20px 20px;
 }
 
 #ajax_in_progress a {
@@ -625,17 +625,17 @@ sup.bbc_footnotes, sup.bbc_footnotes a {
 
 /* Top triangle pointer of all level1 dropdown menus, like a speech bubble pointer */
 .listlevel1.subsections::after {
-	background: var(--primary_white);
 	border-color: var(--transparent);
-	border-right-color: var(--primary_border);
 	border-top-color: var(--primary_border);
+	border-right-color: var(--primary_border);
+	background: var(--primary_white);
 }
 
 .poster .linklevel2, .poster .linklevel2:focus,
 .poster .listlevel2:hover .linklevel2 {
 	border-color: var(--transparent);
-	box-shadow: none;
 	background: none;
+	box-shadow: none;
 }
 
 .poster li.listlevel1:hover {

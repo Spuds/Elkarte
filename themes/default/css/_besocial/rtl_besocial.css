@@ -151,7 +151,7 @@
 
 /* Common button styling. */
 input[type="submit"], .drop_area_fileselect_text, button[type="submit"], input[type="button"],
-/* Anchors styled to look like buttons. */
+	/* Anchors styled to look like buttons. */
 .linkbutton:link, .linkbutton:visited {
 	border-right: 1px solid var(--seconday_border_right);
 	border-left: 1px solid var(--seconday_border_left);

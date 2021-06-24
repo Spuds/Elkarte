@@ -1796,7 +1796,9 @@ li.ui-tab.ui-tabs-active.ui-state-active.ui-state-hover .ui-tabs-anchor {
  * Of course, having comments to map em to px for each query is a good idea too.
  */
 
-/* This one does 1024 screens at default font size. */
+/* This one does 1024 screens at default font size.
+   -------------------------------------------------------------------------------------------*/
+
 @media screen and (max-width: 64em) {
 	#menu_sidebar {
 		border-color: var(--seconday_border);
@@ -1822,7 +1824,9 @@ li.ui-tab.ui-tabs-active.ui-state-active.ui-state-hover .ui-tabs-anchor {
 	}
 }
 
-/* This one does 800 screens at default font size. */
+/* This one does 800 screens at default font size.
+   -------------------------------------------------------------------------------------------*/
+
 @media screen and (max-width: 50em) {
 	#main_menu .linklevel1.active, #main_menu .linklevel1.active:hover,
 	#main_menu .linklevel1:not(.panel_toggle) {
@@ -1844,7 +1848,9 @@ li.ui-tab.ui-tabs-active.ui-state-active.ui-state-hover .ui-tabs-anchor {
 	}
 }
 
-/* This one does up to 540 screens. */
+/* This one does up to 540 screens.
+   -------------------------------------------------------------------------------------------*/
+
 @media screen and (max-width: 34em) {
 	.board_lastpost {
 		border-top-color: var(--primary_border);

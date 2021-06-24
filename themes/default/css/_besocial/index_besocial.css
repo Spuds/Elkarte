@@ -624,7 +624,7 @@ sup.bbc_footnotes, sup.bbc_footnotes a {
 	font-size: var(--font13);
 	color: var(--strong_text);
 	border-color: var(--seconday_border);
-	border-top-color: var(--seconday_border_top);;
+	border-top-color: var(--seconday_border_top);
 	border-left-color: var(--seconday_border_left);
 	border-radius: 2px;
 	background-image: linear-gradient(to bottom, var(--primary_white), var(--primary_white_compliment));
@@ -744,11 +744,6 @@ a.active {
 	border-radius: 4px;
 	background: var(--indicator);
 	box-shadow: 1px 1px 2px var(--primary_background);
-}
-
-/* Top triangle pointer of all level1 dropdown menus, like a speech bubble pointer */
-.listlevel1.subsections::after {
-	border: 1px solid var(--transparent);
 }
 
 .likes_indicator {
@@ -1060,7 +1055,7 @@ nav.breadcrumb {
 }
 
 .topic_listing li:first-child {
-	border-top: 2px solid var(--primary_border_top);;
+	border-top: 2px solid var(--primary_border_top);
 }
 
 .topic_listing li {
@@ -1463,7 +1458,7 @@ nav.breadcrumb {
 	border-color: var(--seconday_border_bottom);
 	border-right-style: none;
 	border-left-style: none;
-	background: var(--mid_grey_background);;
+	background: var(--mid_grey_background);
 }
 
 .activity_stats li .bar {
@@ -1801,7 +1796,9 @@ nav.breadcrumb {
  * Of course, having comments to map em to px for each query is a good idea too.
  */
 
-/* This one does 1024 screens at default font size. */
+/* This one does 1024 screens at default font size.
+   -------------------------------------------------------------------------------------------*/
+
 @media screen and (max-width: 64em) {
 	.category_boards .board_row {
 		grid-template-columns: [bicon] 85px [info] auto [avatar] 65px [latest] 40% [end];
@@ -1814,6 +1811,7 @@ nav.breadcrumb {
 
 /* 880px seems best to switch between text and icons for this variant, normally this is
    done at 800px, so we have to copy the index.css code to this media query */
+
 @media screen and (max-width: 55em) {
 	#main_menu .icon-menu {
 		margin: 0.05em .25em;
@@ -1862,7 +1860,9 @@ nav.breadcrumb {
 	}
 }
 
-/* This one does 800 screens at default font size. */
+/* This one does 800 screens at default font size.
+   -------------------------------------------------------------------------------------------*/
+
 @media screen and (max-width: 50em) {
 	#forumtitle {
 		font-size: var(--font24);
@@ -1903,7 +1903,9 @@ nav.breadcrumb {
 	}
 }
 
-/* This one does up to 540 screens. */
+/* This one does up to 540 screens.
+   -------------------------------------------------------------------------------------------*/
+
 @media screen and (max-width: 33.750em) {
 	#main_menu {
 		justify-content: start;
@@ -2038,7 +2040,9 @@ nav.breadcrumb {
 	}
 }
 
-/* This one does 480px screens at default font size. */
+/* This one does 480px screens at default font size.
+   -------------------------------------------------------------------------------------------*/
+
 @media screen and (max-width: 30em) {
 	.mlist li .group {
 		border-right-color: var(--primary_border);

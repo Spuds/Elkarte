@@ -2327,10 +2327,10 @@ nav > .quickbuttons, menu > .quickbuttons {
 }
 
 .childboard_row {
+	font-size: var(--font13);
 	grid-column-start: info;
 	grid-column-end: end;
 	grid-row-start: children;
-	font-size: var(--font13);
 	margin-top: .3em;
 }
 
@@ -5581,6 +5581,7 @@ Stef                       ^
 
 /* less than 1440 width, drop the menu icons other than profile
    -------------------------------------------------------------------------------------------*/
+
 @media screen and (max-width: 89em) {
 	.icon-menu {
 		display: none;
@@ -5593,6 +5594,7 @@ Stef                       ^
 
 /* This one does 1024 screens at default font size.
    -------------------------------------------------------------------------------------------*/
+
 @media screen and (max-width: 64em) {
 	.category_boards .board_row {
 		grid-template-columns: [bicon] 85px [info] auto [avatar] 65px [latest] 40% [end];
@@ -5631,6 +5633,7 @@ Stef                       ^
 
 /* This one does 800 screens at default font size.
    -------------------------------------------------------------------------------------------*/
+
 @media screen and (max-width: 50em) {
 	#logobox img {
 		max-width: 95%;
@@ -5918,6 +5921,7 @@ Stef                       ^
 
 /* This one does 540 and smaller screens at default font size.
    -------------------------------------------------------------------------------------------*/
+
 @media screen and (max-width: 34em) {
 	/* Hide top clutter on smaller screens */
 	#news, #logobox, .rightheader #logobox, #top_section_notice {
@@ -6168,6 +6172,7 @@ Stef                       ^
 		grid-column-start: poster;
 		grid-column-end: end;
 		grid-row-start: postarea;
+		margin: 0;
 	}
 
 	.small_pagelinks {
@@ -6221,10 +6226,6 @@ Stef                       ^
 
 	.editor_wrapper {
 		margin: 0 1%;
-	}
-
-	.postarea {
-		margin: 0;
 	}
 
 	.postarea, .forumtitle {
@@ -6401,7 +6402,9 @@ Stef                       ^
 	}
 }
 
-/* This one does 480px screens at default font size. */
+/* This one does 480px screens at default font size.
+   -------------------------------------------------------------------------------------------*/
+
 @media screen and (max-width: 30em) {
 	#wrapper {
 		padding: 0;
@@ -6697,7 +6700,9 @@ Stef                       ^
 
 }
 
-/* This one does 320px screens at default font size. */
+/* This one does 320px screens at default font size.
+   -------------------------------------------------------------------------------------------*/
+
 @media screen and (max-width: 20em) {
 	.icon-menu {
 		width: 1.55em;

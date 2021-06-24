@@ -1282,7 +1282,9 @@ div.labels {
 	}
 }
 
-/* This one does 540 and smaller screens at default font size. */
+/* This one does 540 and smaller screens at default font size.
+   -------------------------------------------------------------------------------------------*/
+
 @media screen and (max-width: 33.750em) {
 	dt, dd, dd label, .login dt, #advanced_search dt {
 		text-align: right;
@@ -1411,6 +1413,7 @@ div.labels {
  *	$ADMIN
  * -------------------------------------------------------
  */
+
 #manage_boards ul:nth-child(n+2) {
 	padding-right: 30px;
 	padding-left: 0 !important;

@@ -20,12 +20,10 @@
     "no-descending-specificity": null,
     "no-eol-whitespace": true,
     "rule-empty-line-before": [
-      "always",
-      "except": [
-        "after-single-line-comment",
-        "first-nested",
-        "after-comment"
-      ]
+      "always", {
+        "except": ["after-single-line-comment", "first-nested"],
+        "ignore": ["after-comment"]
+      }
     ],
     "order/properties-order": [
       "font",

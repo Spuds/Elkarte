@@ -768,7 +768,7 @@ em, .em {
  */
 
 /* Set a consistent monospace font */
-.bbc_code, .bbc_tt, bbc_pre {
+.bbc_code, .bbc_tt, .bbc_pre {
 	font-family: "DejaVu Sans Mono", Monaco, Menlo, Consolas, 'Roboto Mono', 'Andale Mono', 'Ubuntu Mono', monospace;
 }
 
@@ -1421,11 +1421,6 @@ a.bbc_link {
 	border-radius: 4px;
 }
 
-
-.menulevel3 {
-	min-width: 20ch;
-}
-
 /* Top pointer of level1 dropdown menu, like a speech bubble pointer */
 .listlevel1.subsections::after {
 	position: absolute;
@@ -1483,6 +1478,7 @@ a.bbc_link {
 /* Level 3: drop menu positioning, move to a a flyout position to the right of
    its disclose arrow */
 .menulevel3 {
+	min-width: 20ch;
 	margin: -1.5em 0 0 calc(100% - 6px);
 }
 
@@ -2334,6 +2330,8 @@ nav > .quickbuttons, menu > .quickbuttons {
 	grid-column-start: info;
 	grid-column-end: end;
 	grid-row-start: children;
+	font-size: var(--font13);
+	margin-top: .3em;
 }
 
 /* Styles for the grid content */
@@ -2399,11 +2397,6 @@ nav > .quickbuttons, menu > .quickbuttons {
 .board_row {
 	margin-bottom: 0.1em;
 	padding: 1em 0 .2em 0;
-}
-
-.childboard_row {
-	font-size: var(--font13);
-	margin-top: .3em;
 }
 
 .childboards li:nth-child(n+3)::before {
@@ -3130,11 +3123,8 @@ footer .signature {
 /* Number of views and previous /next links in the category header */
 .nextlinks {
 	font-size: var(--font15);
-	white-space: pre;
-}
-
-.nextlinks {
 	float: right;
+	white-space: pre;
 }
 
 .views_text {
@@ -4948,13 +4938,8 @@ Stef                       ^
 	grid-column-start: span 2;
 	grid-row-start: 2;
 	margin: 0 1em 0;
-	padding-top: .8em;
-	padding-bottom: .8em;
-	border-top: 1px solid;
-}
-
-.search_results_posts .topic_body {
 	padding: 1em 1em .5em 1em;
+	border-top: 1px solid;
 }
 
 /* Use colored border to give gap between results */

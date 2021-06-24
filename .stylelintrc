@@ -9,11 +9,6 @@
         "ignoreAtRules": [ "after-comment", "else", "first-nested", "inside-block" ]
       }
     ],
-    "declaration-block-no-duplicate-properties": [
-      true, {
-        "ignoreProperties": [ "filter" ]
-      }
-    ],
     "block-opening-brace-space-before": "always",
     "block-closing-brace-newline-after": "always",
     "color-hex-case": "upper",
@@ -28,7 +23,8 @@
       "always",
       "except": [
         "after-single-line-comment",
-        "first-nested"
+        "first-nested",
+        "after-comment"
       ]
     ],
     "order/properties-order": [

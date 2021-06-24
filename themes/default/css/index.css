@@ -6487,7 +6487,7 @@ Stef                       ^
 
 	/* Board Listing */
 	.category_boards .board_row {
-		grid-template-columns:  [bicon] 40px [info] auto [end];
+		grid-template-columns: [bicon] 40px [info] auto [end];
 		grid-template-rows: [primary] auto [latest] auto [children] auto;
 	}
 

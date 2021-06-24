@@ -251,14 +251,18 @@ input[type="submit"]:hover, button[type="submit"]:hover, input[type="button"]:ho
  * -------------------------------------------------------
  */
 
-/* This one does 800 screens at default font size. */
+/* This one does 800 screens at default font size.
+   -------------------------------------------------------------------------------------------*/
+
 @media screen and (max-width: 50em) {
 	#menu_sidebar {
 		box-shadow: -3px 3px 3px var(--opacity30);
 	}
 }
 
-/* This one does up to 540 screens. */
+/* This one does up to 540 screens.
+   -------------------------------------------------------------------------------------------*/
+
 @media screen and (max-width: 33.750em) {
 	.topic_listing > li {
 		box-shadow: -3px 3px 6px var(--primary_white_compliment);

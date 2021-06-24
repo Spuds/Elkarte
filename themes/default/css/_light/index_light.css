@@ -1874,6 +1874,9 @@ li.ui-tab.ui-tabs-active.ui-state-active.ui-state-hover .ui-tabs-anchor {
 	}
 }
 
+/* This one does 480px screens at default font size.
+   -------------------------------------------------------------------------------------------*/
+
 @media screen and (max-width: 30em) {
 	.mlist li .group {
 		border-right-color: var(--primary_border);

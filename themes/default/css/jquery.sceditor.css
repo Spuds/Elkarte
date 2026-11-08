@@ -480,13 +480,3 @@ a.sceditor-button-space, .sceditor-button-space div {
 		width: .8rem;
 	}
 }
-
-/* This one does 540 and smaller screens at default font size.
-   -------------------------------------------------------------------------------------------*/
-
-@media screen and (max-width: 34em) {
-	.sceditor-button div, .sceditor-button {
-		width: 3rem;
-		height: 3rem;
-	}
-}

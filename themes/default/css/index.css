@@ -1386,6 +1386,9 @@ a.bbc_link {
 
 /* Main menu bar: wrapper/background on nav */
 #menu_nav {
+	position: relative;
+	/* Keep dropdowns above sticky page controls (z-index: 10). */
+	z-index: 20;
 	display: flex;
 	align-items: center;
 	padding: 2.4rem .4rem 1.2rem .4rem;
@@ -1845,7 +1848,6 @@ a.bbc_link {
 	line-height: var(--arrow);
 	position: relative;
 	flex: 0 1 auto;
-	flex-wrap: wrap;
 	height: var(--arrow);
 	padding: 0 .8rem 0 2.4rem;
 	text-decoration: none;
@@ -2102,7 +2104,7 @@ button[type="submit"].quick_quote_button.hide {
 	padding: .2rem .8rem;
 }
 
-.pagelinks .navPages, .pagelinks .current_page, .expand_pages, .small_pagelinks .navPages {
+.pagelinks > li {
 	flex: 0 0 auto;
 }
 
@@ -2502,7 +2504,6 @@ body:has(#top_section.th_collapse) nav.pagesection:has(+ #forumposts) {
 .board_icon {
 	display: block;
 	width: 4.5rem;
-	height: 4.5rem;
 }
 
 .board_info {
@@ -2704,7 +2705,8 @@ body:has(#top_section.th_collapse) nav.pagesection:has(+ #forumposts) {
 
 /* Sort topics dropdown, flyout to the left, positioned directly under it's control */
 .no_js .listlevel1:hover #sortby,
-.no_js .listlevel1:focus-within #sortby {
+.no_js .listlevel1:focus-within #sortby,
+#sortby.selected {
 	transform: translateX(50%) rotateX(0deg);
 }
 
@@ -2907,24 +2909,12 @@ body:has(#top_section.th_collapse) nav.pagesection:has(+ #forumposts) {
 	font-variant-numeric: tabular-nums;
 }
 
-/* Container, holds moderation checkbox or icons */
-.topic_moderation, .topic_moderation_alt {
+/* Container, holds the moderation checkbox. */
+.topic_moderation {
 	height: 100%;
 	grid-column-start: topic_moderation;
-}
-
-.topic_moderation {
 	padding: .8rem 1rem;
 	place-self: center center;
-}
-
-.topic_moderation_alt {
-	place-self: center center;
-}
-
-.topic_moderation_alt a {
-	line-height: 1.4;
-	padding: 0 .12em;
 }
 
 .topic_listing .warningbox {
@@ -3229,10 +3219,6 @@ aside.poster, #quickreplybox .poster, #quicktopicbox .poster {
 	overflow-wrap: normal;
 }
 
-.listlevel2.poster_ip .helpicon {
-	margin: 0;
-}
-
 .warning .linklevel2 .warnicon {
 	margin: 0 .4rem 0 0;
 }
@@ -3450,11 +3436,6 @@ aside.poster, #quickreplybox .poster, #quicktopicbox .poster {
 	max-width: 100%;
 	margin: 0 .4rem 1.6rem 0;
 	text-align: center;
-}
-
-/* Reset default browser margins on figure elements used for image attachments */
-figure.attachment_block {
-	margin: 0 .4rem 1.6rem 0;
 }
 
 figure.attachment_block figcaption {
@@ -4828,7 +4809,6 @@ ul.cf_icons li:not(:first-child)::before {
 /* Holds the "pie-hole" SVG and text in profile stats */
 .profile_pie {
 	float: left;
-	align-items: center;
 	width: 2.8rem;
 	height: 2.8rem;
 	margin-right: 1.6rem;
@@ -6179,6 +6159,19 @@ div.labels {
 	}
 }
 
+/* 1600+ wide screens, Allow for 640/360 video to stack side X side
+   -------------------------------------------------------------------------------------------*/
+
+@media screen and (min-width: 100em) {
+	.elk_video_container {
+		max-width: 64rem;
+	}
+
+	.elk_video iframe {
+		max-height: 36rem;
+	}
+}
+
 /* Up to 1424px at the default font size, drop menu icons other than profile
    -------------------------------------------------------------------------------------------*/
 
@@ -6212,35 +6205,17 @@ div.labels {
 	}
 }
 
-/* 1600+ wide screens, Allow for 640/360 video to stack side X side
-   -------------------------------------------------------------------------------------------*/
-
-@media screen and (min-width: 100em) {
-	.elk_video_container {
-		max-width: 64rem;
-	}
-
-	.elk_video iframe {
-		max-height: 36rem;
-	}
-}
-
 /* This one does 1024 screens at default font size.
    -------------------------------------------------------------------------------------------*/
 
 @media screen and (max-width: 64em) {
-	/* Move counts below the primary information rather than removing them. */
 	.category_boards .board_row {
 		grid-template-columns: [bicon] 6rem [info] minmax(0, 1fr) [avatar] 6.5rem [latest] 40% [col-end];
-		grid-template-rows: [primary] auto [stats] auto [children] auto;
+		grid-template-rows: [primary] auto [children] auto;
 	}
 
 	.category_boards .board_stats {
 		display: none;
-		padding: .2rem .4rem .6rem;
-		text-align: start;
-		grid-column: info / col-end;
-		grid-row: stats;
 	}
 
 	.topic_info {
@@ -6264,12 +6239,8 @@ div.labels {
 		gap: .3rem;
 	}
 
-	.topic_latest, .topic_icons, .topic_moderation, .topic_moderation_alt {
+	.topic_latest, .topic_icons, .topic_moderation {
 		grid-row: 1 / span 2;
-	}
-
-	.bbc_img {
-		max-width: 100%;
 	}
 
 	#menu_nav {
@@ -6286,8 +6257,8 @@ div.labels {
 	}
 
 	.topic_name h4 .new_posts, .new_posts, .require_approval {
-		font-size: var(--font12);
-		padding: .1rem .6rem .2rem .4rem;
+		font-size: var(--font15);
+		padding: .1rem .6rem .2rem .5rem;
 	}
 
 	.editor_wrapper {
@@ -6390,17 +6361,12 @@ div.labels {
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		margin-right: .2rem;
 		border: 1px solid;
 	}
 
 	#main_menu .linklevel1, #main_menu .linklevel1 a {
 		margin: 0;
 		padding: 0;
-	}
-
-	#main_menu .linklevel1 > .pm_indicator {
-		display: none;
 	}
 
 	#main_menu .linklevel1.active, #main_menu .linklevel1.active:hover {
@@ -6461,13 +6427,8 @@ div.labels {
 		display: none;
 	}
 
-	.topic_moderation_alt {
-		display: none;
-	}
-
 	.board_icon {
 		width: 3.5rem;
-		height: 3.5rem;
 	}
 
 	.board_info .moderators, .childboards {
@@ -6485,6 +6446,17 @@ div.labels {
 
 	.board_row .board_latest {
 		padding: 1rem .4rem .4rem .4rem;
+	}
+
+	/* Give the timestamp its own wrapping line in the narrow latest-post column. */
+	.category_boards .board_lasttime {
+		display: block;
+		white-space: normal;
+		overflow-wrap: anywhere;
+	}
+
+	.category_boards .board_lasttime::before {
+		content: none;
 	}
 
 	/* Message Index: preserve room for last-post information and moderation. */
@@ -6590,6 +6562,26 @@ div.labels {
 		position: unset;
 	}
 
+	/* Stack both summary column levels alongside compact settings forms. */
+	#basicinfo, #detailedinfo {
+		float: none;
+		width: 100%;
+	}
+
+	.profileblock_left, .profileblock_right {
+		float: none;
+		overflow: auto;
+		width: 100%;
+	}
+
+	/* Long profile action labels must fit their value column. */
+	.profileblock .linkbutton {
+		max-width: 100%;
+		height: auto;
+		margin-inline: 0;
+		white-space: normal;
+	}
+
 	/* Shared forms: stack settings rows without stretching short controls. */
 	dd input, dd select, dd textarea {
 		max-width: 100%;
@@ -6649,13 +6641,13 @@ div.labels {
 		margin-left: 0;
 	}
 
-	/* Keep larger page links and the action menu on separate rows. */
+	/* Let page links and actions share a row when their controls fit. */
 	.pagesection {
 		row-gap: .6rem;
 	}
 
 	.pagesection > .pagelinks, .pagesection > .buttonlist {
-		flex: 1 1 100%;
+		flex: 1 1 auto;
 		flex-wrap: wrap;
 		min-width: 0;
 	}
@@ -6675,6 +6667,25 @@ div.labels {
 		min-height: 4rem;
 		white-space: normal;
 		overflow-wrap: anywhere;
+	}
+
+	/* Keep IP help and address links together when submenu links become flex. */
+	.poster_ip {
+		display: flex;
+		align-items: center;
+		gap: .4rem;
+	}
+
+	/* SVG content needs an explicit box when the help link is a flex container. */
+	.helpicon::before {
+		display: inline-block;
+		flex: none;
+		width: 1.8rem;
+		height: 1.8rem;
+	}
+
+	.linklevel2 > .icon, .linklevel2.helpicon .linklevel3 > .icon {
+		flex-shrink: 0;
 	}
 
 	/* Size top-menu dropdowns for their labels rather than the icon above. */
@@ -6723,6 +6734,13 @@ div.labels {
 		flex-shrink: 0;
 		margin-inline-start: .4rem;
 		white-space: nowrap;
+	}
+
+	/* Wrapping labels must not shrink dropdowns to the More button width. */
+	.quickbuttons .menulevel2 {
+		width: max-content;
+		min-width: min(12rem, calc(100vw - 4rem));
+		max-width: min(36rem, calc(100vw - 4rem));
 	}
 
 	.quickbuttons .listlevel1 {
@@ -6958,10 +6976,6 @@ div.labels {
 		margin: 0 1rem;
 	}
 
-	#collapse_button {
-		display: none;
-	}
-
 	/* General layout considerations */
 	#wrapper {
 		padding-right: .4rem;
@@ -7008,6 +7022,11 @@ div.labels {
 	}
 
 	/* Menu Adjustments */
+	#main_menu {
+		flex-wrap: wrap;
+		gap: .2rem .6rem;
+	}
+
 	.linklevel1 {
 		white-space: normal;
 	}
@@ -7113,7 +7132,7 @@ div.labels {
 		margin-bottom: .2rem;
 	}
 
-	.board_latest {
+	.board_row .board_latest {
 		padding: 0 .6rem;
 		border-left: 0;
 	}
@@ -7424,7 +7443,7 @@ div.labels {
 		flex-wrap: wrap;
 	}
 
-	#posting_icons > p, .table_list .stats, .table_list .lastpost, .table_grid .lastpost {
+	#posting_icons > p, .table_grid .lastpost {
 		display: none;
 	}
 
@@ -7494,18 +7513,6 @@ div.labels {
 		display: none;
 	}
 
-	/* Profile */
-	#basicinfo, #detailedinfo {
-		float: none;
-		width: 100%;
-	}
-
-	.profileblock_left, .profileblock_right {
-		float: none;
-		overflow: auto;
-		width: 100%;
-	}
-
 	/* Dont show the quick search options */
 	#search_jump_to, .search_controls {
 		display: none;
@@ -7551,13 +7558,17 @@ div.labels {
 		display: none;
 	}
 
-	/* Keep count columns aligned within the stacked profile summaries. */
-	#popularposts div.content dt, #popularactivity div.content dt {
-		width: 67% !important;
+	/* Keep labels and counts paired independently of stacked form rows. */
+	#popularposts div.content dl, #popularactivity div.content dl {
+		display: grid;
+		grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+		row-gap: .6rem;
 	}
 
-	#popularposts div.content dd, #popularactivity div.content dd {
-		width: 33% !important;
+	#popularposts div.content dl > dt, #popularposts div.content dl > dd,
+	#popularactivity div.content dl > dt, #popularactivity div.content dl > dd {
+		width: auto;
+		margin: 0;
 	}
 }
 
@@ -7578,12 +7589,26 @@ div.labels {
         margin: 0 1%;
     }
 
-	/* General layout considerations */
-	dt, dd, .login dt, #advanced_search dt {
+	/* Stack form fields without overriding unrelated definition lists. */
+	form dt, form dd, .settings dt, .settings dd, .login dt, .login dd {
 		display: block;
 		width: 100% !important;
 		margin: 0 !important;
-		text-align: left;
+		text-align: start;
+	}
+
+	#popularposts div.content dl, #popularactivity div.content dl {
+		row-gap: 0;
+	}
+
+	/* Stack profile details only on phones, independently of forms and board counts. */
+	#detailedinfo dt, #detailedinfo dd, #tracking dt, #tracking dd,
+	.profileblock dt, .profileblock dd,
+	#generalstats .content dt, #generalstats .content dd {
+		float: none;
+		width: 100%;
+		margin: 0;
+		text-align: start;
 	}
 
 	.content {
@@ -7596,20 +7621,8 @@ div.labels {
 		white-space: normal;
 	}
 
-	/* Wrap the main menu while retaining usable touch targets. */
-	#main_menu {
-        flex-wrap: wrap;
-        gap: .2rem .6rem;
-	}
-
 	.listlevel1#button_profile {
 		margin-left: initial;
-	}
-
-	#main_menu .icon-menu, #main_menu .icon-menu.i-menu-profile {
-		width: 4.5rem;
-		height: 4.5rem;
-		min-height: 4.5rem;
 	}
 
 	#search_form_button .linklevel1 {
@@ -7635,22 +7648,21 @@ div.labels {
 		white-space: normal;
 	}
 
-	.quickbuttons i {
+	.quickbuttons > .listlevel1 > .linklevel1 > i {
 		width: 0;
 	}
 
-	.quickbuttons i::before {
+	.quickbuttons > .listlevel1 > .linklevel1 > i::before {
 		display: none;
 	}
 
 	/* Board Listing */
 	.category_boards .board_row {
 		grid-template-columns: [bicon] 5rem [info] minmax(0, 1fr);
-		grid-template-rows: [primary] auto [latest] auto [stats] auto [children] auto;
+		grid-template-rows: [primary] auto [latest] auto [children] auto;
 		grid-template-areas:
 			"bicon info"
 			"latest latest"
-			"stats stats"
 			"children children";
 	}
 
@@ -7667,10 +7679,6 @@ div.labels {
 	.category_boards .board_icon {
 		height: 4.8rem;
 		grid-area: bicon;
-	}
-
-	.category_boards .board_stats {
-		grid-area: stats;
 	}
 
 	.board_info h3 a {
@@ -7698,7 +7706,7 @@ div.labels {
 	}
 
 	.childboards > li {
-		margin: 0 3rem;
+		margin: 0 .5rem;
 	}
 
 	/* info center */

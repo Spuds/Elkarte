@@ -592,6 +592,8 @@ em, .em {
 .category_header, .forum_category .category_header {
     font-size: var(--font18);
     line-height: 1.8;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
     padding: .2rem .8rem;
     border: 1px solid;
     border-radius: .4rem .4rem 0 0;
@@ -866,6 +868,20 @@ input[type=checkbox].quote-show-more:checked + .bbc_quote {
 /* Styling for BBC tags */
 .bbc_size {
     line-height: 1.4;
+}
+
+/* BBC callout / alert blocks — [quote box=note|tip|important|warning|caution] */
+.bbc_callout {
+    margin: .6rem 0 1.6rem 0;
+    padding: .6rem 1rem .6rem 1rem;
+    border-left: 4px solid;
+}
+
+.bbc_callout_title {
+    font-weight: bold;
+    text-transform: capitalize;
+    margin: 0 0 .4rem 0;
+    padding: 0;
 }
 
 /* the "inherit" declarations allow bbc tag color nesting to work, due to strong,
@@ -2542,6 +2558,10 @@ button[type="submit"].quick_quote_button.hide {
     margin: 0 auto;
 }
 
+#ic_recentposts {
+    width: 100%;
+}
+
 #ps_recentposts .norecent, #ps_recenttopics .norecent {
     padding: 1.6rem;
     text-align: center;
@@ -2653,7 +2673,7 @@ button[type="submit"].quick_quote_button.hide {
     border: 1px solid;
     border-bottom: 0;
     grid-template-rows: auto;
-    grid-template-columns: [topic_icon] 5rem [topic_info] auto [topic_latest] 30rem [topic_stats] 12.5rem [topic_moderation] 7.5rem;
+    grid-template-columns: [topic_icon] 5rem [topic_info] 1fr [topic_latest] 35rem [topic_stats] 15rem [topic_moderation] 7.5rem;
 }
 
 /* The quick topic area is like the topic listing, it's sits at the top */
@@ -2726,6 +2746,9 @@ button[type="submit"].quick_quote_button.hide {
 
 /* Container, Holds last poster and time, link to end */
 .topic_latest {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
     font-size: var(--font14);
     height: 100%;
     padding: .8rem 0;
@@ -2734,26 +2757,57 @@ button[type="submit"].quick_quote_button.hide {
 }
 
 .topic_latest .board_avatar {
-    float: left;
+    flex-shrink: 0;
     margin: 0 .8rem;
+}
+
+.topic_latest_info {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    line-height: 1.5;
+}
+
+.topic_latest_info > span {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .topic_latest.relative {
-    margin: 0 .8rem;
+    padding: .4rem .8rem;
 }
 
 .topic_latest .i-last_post {
-    float: right;
-    padding-top: .4rem;
+    flex-shrink: 0;
+    margin-left: auto;
 }
 
 /* Container, Holds the message stats */
 .topic_stats {
     font-size: var(--font13);
     line-height: 1.4;
-    text-align: right;
     grid-column-start: topic_stats;
     place-self: center end;
+    display: grid;
+    grid-template-columns: auto auto;
+    column-gap: .3rem;
+    row-gap: .25rem;
+    padding-right: .8rem;
+    align-items: center;
+}
+
+.stat-item {
+    display: contents;
+    white-space: nowrap;
+}
+
+.stat_count {
+    font-size: var(--font15);
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    text-align: right;
 }
 
 /* Container, holds moderation checkbox or icons */
@@ -3193,6 +3247,7 @@ aside.poster, #quickreplybox .poster, #quicktopicbox .poster {
     margin-top: .6rem;
     padding: 1px 0 .5rem 0;
     grid-area: keyinfo;
+    border-bottom: 1px solid;
 }
 
 .keyinfo.above {
@@ -3623,6 +3678,10 @@ aside.poster, #quickreplybox .poster, #quicktopicbox .poster {
     top: 1px;
 }
 
+.new_post_anchor {
+    scroll-margin-top: 6rem;
+}
+
 /* The overall video container, holds header and video divs */
 .elk_video_container {
     max-width: 64rem;
@@ -3706,6 +3765,23 @@ aside.poster, #quickreplybox .poster, #quicktopicbox .poster {
 #display_jump_to {
     margin-left: auto;
     white-space: nowrap;
+}
+
+/* Guest name/email fields in quick reply */
+.guest_fields {
+    margin-bottom: .8rem;
+}
+
+.guest_fields .form_row {
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+    margin-bottom: .4rem;
+}
+
+.guest_fields .form_row label {
+    min-width: 5rem;
+    text-align: right;
 }
 
 /* Container for the quick reply area., holds header and editor areas */

@@ -354,10 +354,8 @@ function template_search_form()
 				<button type="submit" aria-label="' . $txt['search'] . '" name="search;sa=results" class="', (empty($modSettings['search_dropdown'])) ? '' : 'with_select', '">
 					<i class="icon i-search"><s>', $txt['search'], '</s></i>
 				</button>
-				<button type="button" aria-label="' . $txt['find_close'] . '">
-					<label for="search_form_check">
-						<i class="icon i-close"><s>', $txt['find_close'], '</s></i>
-					</label>
+				<button type="button" id="search_form_close" aria-label="' . $txt['find_close'] . '">
+					<i class="icon i-close"><s>', $txt['find_close'], '</s></i>
 				</button>
 				<input type="hidden" name="advanced" value="0" />
 			</form>';
@@ -372,11 +370,9 @@ function template_mb_search_bar()
 
 	echo '
 						<li id="search_form_button" class="listlevel1" role="none">
-							<label for="search_form_check">
-								<a class="linklevel1 panel_search" role="menuitem">
-									<i class="main-menu-icon i-search colorize-white"><s>', $txt['search'], '</s></i>
-								</a>
-							</label>
+							<button type="button" class="linklevel1 panel_search" role="menuitem" hidden aria-controls="search_form_menu" aria-expanded="false" aria-label="', $txt['search'], '">
+								<i class="main-menu-icon i-search colorize-white"><s>', $txt['search'], '</s></i>
+							</button>
 						</li>';
 }
 
@@ -561,7 +557,7 @@ function template_menu()
 						<li id="button_', $act, '" class="listlevel1', empty($button['sub_buttons']) ? '"' : ' subsections"', ' role="none">
 							<a ', $class, $href, $target, $ally, $onclick, ' role="menuitem"', empty($button['sub_buttons']) ? '' : ' aria-haspopup="true"', '>',
 								(empty($button['data-icon']) ? '' : '<i class="icon icon-menu icon-lg ' . $button['data-icon'] . (empty($button['active_button']) ? '' : ' enabled') . '" ' . $altTitle . '></i> '),
-								'<span class="button_title" aria-hidden="', (empty($button['sub_buttons']) ? 'true' : 'false'), '">', $button['title'], '</span>
+								'<span class="button_title">', $button['title'], '</span>
 							</a>';
 
 		// Any 2nd level menus?

@@ -1251,8 +1251,7 @@ div.labels {
 	#basicinfo, #detailedinfo, .profileblock_left, .profileblock_right,
 	#popularposts, #popularactivity,
 	#creator dt, #creator dd, .settings dt, .settings dd,
-	#detailedinfo dt, #detailedinfo dd, #tracking dt, #tracking dd,
-	.profileblock dt, .profileblock dd,
+	#tracking dt, #tracking dd,
 	#generalstats .content dt, #generalstats .content dd,
 	#popularposts div.content dt, #popularposts div.content dd,
 	#popularactivity div.content dt, #popularactivity div.content dd {
@@ -1352,10 +1351,6 @@ div.labels {
 		float: none;
 	}
 
-	.admin_menu li {
-		float: right;
-	}
-
 	#main_menu {
 		clear: right;
 	}
@@ -1397,6 +1392,13 @@ div.labels {
 	}
 
 	.pagesection div.floatright {
+		float: none;
+	}
+}
+
+/* Match the shared phone-only stacking after the RTL detail-column floats. */
+@media screen and (max-width: 30em) {
+	#detailedinfo dt, #detailedinfo dd, .profileblock dt, .profileblock dd {
 		float: none;
 	}
 }

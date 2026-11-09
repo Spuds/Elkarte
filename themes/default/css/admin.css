@@ -1186,19 +1186,6 @@ dl.themes_list dd {
 		padding: 0 1rem;
 	}
 
-	/* Level 1 button background. */
-	.dropmenu li {
-		line-height: 3;
-	}
-
-	.dropmenu li ul {
-		top: 5.5rem;
-	}
-
-	.dropmenu li li a {
-		line-height: 4;
-	}
-
 	#live_news, #supportVersionsTable {
 		width: 100%;
 	}

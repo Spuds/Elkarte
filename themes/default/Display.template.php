@@ -754,7 +754,7 @@ function template_moderation_buttons_below()
 	if (can_see_button_strip($context['mod_buttons']))
 	{
 		echo '
-				<i class="icon icon-lg i-menu hamburger_30" data-id="moderationbuttons"></i>';
+				<button type="button" class="icon icon-lg i-menu hamburger_30" data-id="moderationbuttons" aria-controls="moderationbuttons_strip" aria-expanded="false" aria-label="', $txt['moderate'], '"></button>';
 	}
 
 	template_button_strip($context['mod_buttons'], '', ['id' => 'moderationbuttons_strip']);

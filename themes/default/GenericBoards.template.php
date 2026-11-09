@@ -196,7 +196,7 @@ function template_list_boards(array $boards, $id)
 		echo '
 					</div>
 					<div class="board_stats">
-						', $board['is_redirect'] ? comma_format($board['posts']) . ' ' . $txt['redirects'] : comma_format($board['topics']) . ' ' . $txt['board_topics'] . '<br /> ' . comma_format($board['posts']) . ' ' . $txt['posts'], '
+						<span class="stat_count">', $board['is_redirect'] ? comma_format($board['posts']) . '</span><span class="stat-item">' . $txt['redirects'] . '</span>' : comma_format($board['topics']) . '</span><span class="stat-item">' . $txt['board_topics'] . '</span><span class="stat_count">' . comma_format($board['posts']) . '</span><span class="stat-item">' . $txt['posts'], '</span>
 					</div>';
 
 		// Show the "Sub-boards: ". (there's a link_children, but we're going to bold the new ones...)

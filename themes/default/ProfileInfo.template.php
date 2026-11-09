@@ -191,7 +191,7 @@ function template_action_showPermissions()
 	{
 		echo '
 		<p class="description">', $txt['showPermissions_help'], '</p>
-		<div id="permissions" class="flow_hidden">';
+		<div id="permissions" class="table_scroll" tabindex="0" role="region" aria-label="', $txt['showPermissions'], '">';
 
 		if (!empty($context['no_access_boards']))
 		{
@@ -399,14 +399,14 @@ function template_action_statPanel()
 	else
 	{
 		echo '
-				<ul class="activity_stats flow_hidden">
-					<canvas id="hourStats" height="200" style="width:80%"></canvas>';
+				<div class="activity_stats">
+					<canvas id="hourStats" role="img" aria-label="', $txt['statPanel_activityTime'], '"></canvas>';
 
 		setHourData($context['posts_by_time']);
 		showHourChart('posts');
 
 		echo '
-				</ul>';
+				</div>';
 	}
 
 	echo '
@@ -1129,7 +1129,7 @@ function template_profile_block_buddies()
 
 					foreach ($data['custom_fields'] as $cpf)
 					{
-						if ($cpf['placement'] == 1)
+						if (isset($cpf['placement']) && $cpf['placement'] == 1)
 						{
 							$im[] = $cpf['value'];
 						}
@@ -1419,9 +1419,10 @@ function showHourChart($type)
 			},
 			hourConfig = {
 				type: "line",
-				responsive: true,
 				data: hourDataset,
 				options: {
+					responsive: true,
+					maintainAspectRatio: false,
 					scales: {
 						y: {
 							stacked: true,

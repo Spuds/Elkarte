@@ -126,8 +126,8 @@ function template_topic_listing_above()
 	{
 		echo '
 						<li class="listlevel1 quickmod_select_all">
-							<label for="select_all" class="hide">', $txt['all'], '</label>
-							<input type="checkbox" id="select_all" onclick="invertAll(this, document.getElementById(\'quickModForm\'), \'topics[]\');" />
+							<label for="select_all">', $txt['all'], '
+							<input type="checkbox" id="select_all" onclick="invertAll(this, document.getElementById(\'quickModForm\'), \'topics[]\');" /></label>
 						</li>';
 	}
 
@@ -245,7 +245,9 @@ function template_topic_listing()
 
 			// The subject/poster section
 			echo '
-				<div class="topic_info">
+				<div class="topic_info">',
+					$topic['is_sticky'] ? '<span class="topic_status"><i class="icon i-pin" aria-hidden="true"></i> ' . $txt['sticky_topic'] . '</span>' : '',
+					$topic['is_locked'] ? '<span class="topic_status"><i class="icon i-lock" aria-hidden="true"></i> ' . $txt['locked_topic'] . '</span>' : '', '
 					<div class="topic_name" ', (empty($topic['quick_mod']['modify']) ? '' : 'id="topic_' . $topic['first_post']['id'] . '"  ondblclick="oQuickModifyTopic.modify_topic(\'' . $topic['id'] . "', '" . $topic['first_post']['id'] . '\');"'), '>
 						<h4>';
 
@@ -313,7 +315,7 @@ function template_topic_listing()
 			echo '
 					<span class="topic_latest_info">
 						<span>', $topic['last_post']['html_time'], '</span>
-						<span>', $txt['by'], ' ', empty($topic['last_post']['member']['avatar']) ? $topic['last_post']['member']['link'] : $topic['last_post']['member']['name'], '</span>
+						<span>', $txt['by'], ' ', $topic['last_post']['member']['link'], '</span>
 					</span>
 					<a class="topicicon i-last_post" href="', $topic['last_post']['href'], '" title="', $txt['last_post'], '"></a>
 				</div>';
@@ -330,7 +332,7 @@ function template_topic_listing()
 			{
 				echo '
 				<div class="topic_moderation">
-					<input type="checkbox" name="topics[]" aria-label="check ', $topic['id'], '" value="', $topic['id'], '" />
+					<label><input type="checkbox" name="topics[]" aria-label="check ', $topic['id'], '" value="', $topic['id'], '" /></label>
 				</div>';
 			}
 

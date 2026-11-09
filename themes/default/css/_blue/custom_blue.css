@@ -133,11 +133,11 @@
     #collapse_button .linklevel1, #search_form_button .linklevel1, #search_form_button_close .linklevel1 {
         width: 4.4rem;
         height: 4.5rem;
-        padding: 1.4rem 0 0 0 !important;
+        padding: 0 !important;
     }
 }
 
-@media screen and (max-width: 33.750em) {
+@media screen and (max-width: 34em) {
 	.poster:after, .posterarea:before {
 		border-bottom: 1px solid;
 	}

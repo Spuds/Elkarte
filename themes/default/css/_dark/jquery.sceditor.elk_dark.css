@@ -435,12 +435,8 @@ a.sceditor-button-space, .sceditor-button-space div {
 /* Use larger buttons for targeting on the smaller screens */
 @media screen and (max-width: 51.5em) {
 	.sceditor-button div, .sceditor-button {
-		width: 36px;
-		height: 36px;
-	}
-
-	.sceditor-group {
-		overflow: initial;
+		width: 4rem;
+		height: 4rem;
 	}
 
 	.sceditor-insertemoticon img, .sceditor-smileyPopup img {

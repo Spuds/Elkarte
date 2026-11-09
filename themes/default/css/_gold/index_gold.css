@@ -2233,10 +2233,6 @@ ul.cf_icons {
    -------------------------------------------------------------------------------------------*/
 
 @media screen and (max-width: 34em) {
-	.board_lastpost {
-		border-top-color: var(--primary_border);
-	}
-
 	.topic_listing > li {
 		border-color: var(--secondary_border);
 		box-shadow: var(--shadow-elevation-medium);

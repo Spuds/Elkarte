@@ -225,7 +225,7 @@
     #collapse_button .linklevel1, #search_form_button .linklevel1, #search_form_button_close .linklevel1 {
         width: 4.4rem;
         height: 4.5rem;
-        padding: 1.4rem 0 0 0 !important;
+        padding: 0 !important;
     }
 }
 

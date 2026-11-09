@@ -273,7 +273,7 @@ body {
 /* This one does up to 540 screens.
    -------------------------------------------------------------------------------------------*/
 
-@media screen and (max-width: 33.750em) {
+@media screen and (max-width: 34em) {
 	.board_latest {
 		border-right-color: var(--transparent);
 	}

@@ -16,6 +16,7 @@
     --hexcode: #FFA500;
 }
 
+.i-spgroup::before, .i-picture::before,
 .i-menu-pm-off::before,
 .i-menu-mentions-off::before,
 .i-menu-admin::before,

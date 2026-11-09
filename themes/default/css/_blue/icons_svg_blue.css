@@ -22,6 +22,7 @@
 }
 
 /* normal color of top menu icons */
+.i-spgroup::before, .i-picture::before,
 .i-menu-pm-off::before,
 #button_home .i-home::before,
 .i-menu-mentions-off::before,

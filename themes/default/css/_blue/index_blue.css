@@ -2219,11 +2219,7 @@ ul.cf_icons {
 /* This one does up to 540 screens.
    -------------------------------------------------------------------------------------------*/
 
-@media screen and (max-width: 33.750em) {
-	.board_lastpost {
-		border-top-color: var(--primary_border);
-	}
-
+@media screen and (max-width: 34em) {
 	.topic_listing > li {
 		border-color: var(--secondary_border);
 		box-shadow: var(--shadow-elevation-medium);

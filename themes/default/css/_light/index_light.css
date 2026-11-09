@@ -538,9 +538,9 @@ strong {
 
 /* Special box-shadow - gradient end-stop must match the quote background */
 input[type=checkbox].quote-show-more {
+	border-left-color: var(--primary_border);
 	background: linear-gradient(to bottom, var(--transparent) 0%, var(--transparent) 40%, var(--quote_background, var(--news_background)) 90%);
 	box-shadow: 1px 1px 0 0 var(--box_shadow);
-	border-left-color: var(--primary_border);
 }
 
 
@@ -916,6 +916,12 @@ sup.bbc_footnotes, sup.bbc_footnotes a {
 	box-shadow: none;
 }
 
+/* Sidebar collapse/expand toggle */
+#menu_sidebar::before {
+	filter: invert(57%) sepia(47%) saturate(608%) hue-rotate(73deg) brightness(95%) contrast(80%);
+	--hexcode: #4CAF50;
+}
+
 /* ------------------------
  *	$BREADCRUMB
  * ------------------------
@@ -1220,15 +1226,15 @@ sup.bbc_footnotes, sup.bbc_footnotes a {
 }
 
 .topic_listing > li.sticky_row, .topic_listing > li.locked_row.sticky_row {
-	background: var(--basic_row);
 	border-left-width: 5px;
 	border-left-color: var(--infobox_border);
+	background: var(--basic_row);
 }
 
 .topic_listing > li.locked_row {
-	background: var(--locked_row);
 	border-left-width: 5px;
 	border-left-color: var(--infobox_border);
+	background: var(--locked_row);
 }
 
 #topic_icons {
@@ -2044,8 +2050,8 @@ ul.cf_icons {
 }
 
 .statsbar .righttext.voted {
-	background-image: linear-gradient(to bottom, var(--gradient_bar_bottom) 0%, var(--gradient_bar_top) 100%);
 	color: var(--contrast_text);
+	background-image: linear-gradient(to bottom, var(--gradient_bar_bottom) 0%, var(--gradient_bar_top) 100%);
 }
 
 #like_post_stats_overlay {
@@ -2150,10 +2156,6 @@ ul.cf_icons {
    -------------------------------------------------------------------------------------------*/
 
 @media screen and (max-width: 34em) {
-	.board_lastpost {
-		border-top-color: var(--primary_border);
-	}
-
 	.topic_listing > li {
 		border-color: var(--secondary_border);
 		box-shadow: var(--shadow-elevation-medium);
@@ -2170,12 +2172,6 @@ ul.cf_icons {
 	.forumposts > aside {
 		border-bottom-color: var(--primary_border_bottom);
 	}
-}
-
-/* Sidebar collapse/expand toggle */
-#menu_sidebar::before {
-	filter: invert(57%) sepia(47%) saturate(608%) hue-rotate(73deg) brightness(95%) contrast(80%);
-	--hexcode: #4CAF50;
 }
 
 /* This one does 480px screens at default font size.

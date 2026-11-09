@@ -13,8 +13,73 @@
 // Normal JS document ready event
 document.addEventListener('DOMContentLoaded', function() {
 
-	// If they touch the screen, then we switch to click menus
+	// The profile/admin sidebar uses a native button for touch and keyboard access.
+	let sidebar = document.getElementById('menu_sidebar'),
+		sidebarToggle = sidebar && sidebar.querySelector('.sidebar_menu_toggle');
+
+	if (sidebarToggle)
+	{
+		let narrowSidebar = window.matchMedia('(max-width: 51.5em)'),
+			setSidebarOpen = function(open) {
+				sidebar.classList.toggle('is_open', open);
+				sidebarToggle.setAttribute('aria-expanded', String(open));
+			};
+		sidebar.classList.add('sidebar_collapsible');
+		setSidebarOpen(!narrowSidebar.matches);
+		sidebarToggle.addEventListener('click', function() {
+			setSidebarOpen(!sidebar.classList.contains('is_open'));
+		});
+		sidebar.addEventListener('keydown', function(event) {
+			if (event.key === 'Escape' && narrowSidebar.matches)
+			{
+				setSidebarOpen(false);
+				sidebarToggle.focus();
+			}
+		});
+		narrowSidebar.addEventListener('change', function() {
+			setSidebarOpen(!narrowSidebar.matches);
+		});
+	}
+
+
+	// Keep hover menus for mouse users; enable explicit controls for touch/keyboard.
 	window.addEventListener('touchstart', onFirstTouch, false);
+	document.addEventListener('keydown', onFirstMenuKey, true);
+
+	// Search is a native disclosure button; restore its focus when the panel closes.
+	let searchButton = document.querySelector('#search_form_button button'),
+		searchCheck = document.getElementById('search_form_check'),
+		searchForm = document.getElementById('search_form_menu'),
+		searchClose = document.getElementById('search_form_close'),
+		mainMenu = document.getElementById('main_menu');
+	if (searchButton && searchCheck && searchForm && searchClose && mainMenu)
+	{
+		let setSearchOpen = function(open, restoreFocus) {
+			searchCheck.checked = open;
+			searchButton.setAttribute('aria-expanded', String(open));
+			searchForm.setAttribute('aria-hidden', String(!open));
+			mainMenu.inert = open;
+			if (open)
+			{
+				document.getElementById('quicksearch').focus();
+			}
+			else if (restoreFocus)
+			{
+				searchButton.focus();
+			}
+		};
+		setSearchOpen(false, false);
+		searchButton.hidden = false;
+		searchButton.addEventListener('click', function() { setSearchOpen(true, false); });
+		searchClose.addEventListener('click', function() { setSearchOpen(false, true); });
+		searchForm.addEventListener('keydown', function(event) {
+			if (event.key === 'Escape')
+			{
+				event.preventDefault();
+				setSearchOpen(false, true);
+			}
+		});
+	}
 
 	// Or if they specifically only want click menus
 	if (use_click_menu)
@@ -67,11 +132,13 @@ document.addEventListener('DOMContentLoaded', function() {
 	let hamburger = document.querySelector('.hamburger_30');
 	if (hamburger)
 	{
+		document.getElementById(hamburger.getAttribute('data-id')).classList.add('menu_collapsible');
+		hamburger.setAttribute('aria-expanded', String(document.getElementById(hamburger.getAttribute('data-id')).classList.contains('visible')));
 		hamburger.addEventListener('click', function(e) {
 			let id = this.getAttribute('data-id');
 			e.preventDefault();
-			document.getElementById(id).classList.add('visible');
-			this.classList.add('visible');
+			let expanded = document.getElementById(id).classList.toggle('visible');
+			this.setAttribute('aria-expanded', String(expanded));
 		});
 	}
 
@@ -215,7 +282,16 @@ function onFirstTouch ()
 	useClickMenu();
 }
 
-// Activates click menus when a touch event is detected.
+// A keyboard user can reach menus before any touch/click initialization occurs.
+function onFirstMenuKey (event)
+{
+	if (event.key === 'Tab' || (event.target.closest && event.target.closest('#main_menu, #sort_by, .admin_menu, .sidebar_menu, .quickbuttons, .buttonlist, ul.poster')))
+	{
+		useClickMenu();
+	}
+}
+
+// Activates click menus for touch, keyboard, or the user's menu preference.
 function useClickMenu ()
 {
     // Click Menu drop downs
@@ -238,6 +314,7 @@ function useClickMenu ()
     });
 
     window.removeEventListener('touchstart', onFirstTouch, false);
+    document.removeEventListener('keydown', onFirstMenuKey, true);
 }
 
 // Adds/Removes sticky class to id='menu_nav'

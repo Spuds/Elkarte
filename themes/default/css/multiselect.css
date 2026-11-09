@@ -135,7 +135,7 @@
 	.multiselect-wrapper label {
 		display: flex;
 		align-items: center;
-		min-height: 44px;
+		min-height: 4rem;
 		font-size: var(--font14);
 		white-space: normal;
 		overflow-wrap: anywhere;
@@ -150,11 +150,11 @@
 
 	.multiselect-input-div {
 		height: auto;
-		min-height: 44px;
+		min-height: 4rem;
 	}
 
 	.multiselect-input-div input {
-		min-height: 44px;
+		min-height: 4rem;
 		margin-block: 0;
 	}
 }

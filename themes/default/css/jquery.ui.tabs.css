@@ -41,7 +41,6 @@
 	line-height: 2.077em;
 	position: relative;
 	top: 0;
-	float: left;
 	margin: 1px .2em 0 0;
 	padding: 0;
 	list-style: none;
@@ -91,6 +90,6 @@
 	.ui-tabs .ui-tabs-nav .ui-tabs-anchor {
 		display: flex;
 		align-items: center;
-		min-height: 44px;
+		min-height: 4rem;
 	}
 }

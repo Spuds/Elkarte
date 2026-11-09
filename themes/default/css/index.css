@@ -3599,12 +3599,9 @@ figure.attachment_block figcaption {
 	display: inline-block;
 }
 
-/* Small negative margin on #new anchor for better viewport position */
-#new::before {
-	display: block;
-	visibility: hidden;
-	margin-top: -1em;
-	content: "";
+/* Offset the first-message fragment without pulling page controls over notices. */
+#new:not(.new_post_anchor) {
+	scroll-margin-top: 1em;
 }
 
 /* Emoji and smiley icons in the post */

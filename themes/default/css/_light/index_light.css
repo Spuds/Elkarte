@@ -1159,9 +1159,14 @@ sup.bbc_footnotes, sup.bbc_footnotes a {
 #description_board {
 	background: var(--mid_grey_background);
 	box-shadow: var(--shadow-elevation-medium);
+	background-image: linear-gradient(to bottom, var(--category_header_grad_1), var(--category_header_grad_2));
 }
 
-#description_board .generalinfo, #forumposts .generalinfo {
+#description_board .generalinfo {
+	border-color: var(--primary_border);
+}
+
+#forumposts .generalinfo {
 	border-color: var(--primary_border);
 	background: var(--primary_content_background);
 }
